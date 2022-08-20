@@ -13,10 +13,16 @@ function App() {
   let fetchData = async() => {
       const res = await fetch("https://zenquotes.io/api/random");
       const data = await res.json();
-      setquote(data[0].q);
-      setAuthor(data[0].a);
-      setColor(colors[colorIndex]);
-      setColorIndex(prevIndex => prevIndex ===colors.length-2?prevIndex =0:prevIndex + 1);
+      if(data[0].a === "zenquotes.io"){
+        setquote('Too fast! Wait 10 seconds and try again.');
+        setAuthor('Christina :)')
+      }else{
+        setquote(data[0].q);
+        setAuthor(data[0].a);
+        setColor(colors[colorIndex]);
+        setColorIndex(prevIndex => prevIndex ===colors.length-2?prevIndex =0:prevIndex + 1);
+      }
+      
       
     
    
@@ -25,8 +31,8 @@ function App() {
     document.documentElement.style.setProperty('--theme-color', newColor);
   }
   
-  const theme_color = getComputedStyle(document.documentElement).getPropertyValue('--theme-color')
-  console.log(theme_color);
+  
+  
   
   
   return (
