@@ -117,7 +117,7 @@ button:hover::after {
 	transform: scale(0.1, 1);
 }
 
-p a{
+p a, a{
   color:white;
   text-decoration: none;
 }
